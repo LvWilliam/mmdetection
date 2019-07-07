@@ -1,4 +1,4 @@
-from .aspp import aspp_module
+from .aspp import ASPP
 
 
 __all__ = ['ASPP']
