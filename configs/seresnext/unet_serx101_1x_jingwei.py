@@ -11,9 +11,14 @@ model = dict(
         out_indices=(0, 1, 2, 3),
         frozen_stages=1,
         style='pytorch'),
+    multi_scale=dict(
+        type='ASPP',
+        in_channel=[64, 256, 512, 1024, 2048],
+        out_channel=[32, 64, 128, 256, 512],
+        size=[256, 128, 64, 32, 16]),
     decoder=dict(
         type='UnetSCSE',
-        in_channels=[64, 256, 512, 1024, 2048],
+        in_channels=[32, 64, 128, 256, 512],
         num_filters=16,
         num_classes=4))
 # model training and testing settings
