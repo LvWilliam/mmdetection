@@ -35,7 +35,7 @@ def global_block(in_channel, out_channel, size):
 
 class aspp_module(nn.Module):
     def __init__(self, in_channel, out_channel, size):
-        super(ASPP, self).__init__()
+        super(aspp_module, self).__init__()
         # for i, info in enumetate(zip(in_channel, out_channel, size)):
         self.atrous_block1 = atrous_block1(in_channel, out_channel)
         self.atrous_block6 = atrous_block6(in_channel, out_channel)
@@ -54,13 +54,13 @@ class aspp_module(nn.Module):
         return output
 
 
-class aspp(nn.Module):
+class ASPP(nn.Module):
     def __init__(self,
                  module,
                  in_channels,
                  out_channels,
                  size):
-        super(aspp, self).__init__()
+        super(ASPP, self).__init__()
         self.aspp_layers = []
         for i in range(len(in_channels)):
             aspp_layer = module(in_channels[i], out_channels[i], size[i])
